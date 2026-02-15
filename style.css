@@ -1,0 +1,99 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 600px;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.status-box {
+    background: #2a2a2a;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+#hp-val {
+    color: #ff4444;
+}
+
+#inventory-list {
+    color: #44ff44;
+}
+
+.scene-placeholder {
+    width: 100%;
+    height: 200px;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #555;
+    border: 1px dashed #444;
+    margin-bottom: 20px;
+}
+
+#story-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    min-height: 100px;
+}
+
+.choice-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.choice-btn:hover {
+    background: #444;
+    border-color: #888;
+    transform: translateX(5px);
+}
+
+.choice-btn:disabled {
+    background: #222;
+    color: #555;
+    border-color: #333;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.typing-effect {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

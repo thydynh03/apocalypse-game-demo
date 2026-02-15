@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngày Tận Thế - Survival Story</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <div class="status-box">
+                <span id="hp-label">HP: <span id="hp-val">100</span></span>
+            </div>
+            <div class="status-box">
+                <span id="inventory-label">Túi đồ: <span id="inventory-list">Trống</span></span>
+            </div>
+        </header>
+
+        <main>
+            <div id="scene-image-container">
+                <!-- Placeholder for scene image -->
+                <div class="scene-placeholder">IMG: <span id="scene-img-name">hầm_tối.jpg</span></div>
+            </div>
+            <div id="story-text" class="typing-effect">
+                Đang tải dữ liệu cốt truyện...
+            </div>
+        </main>
+
+        <footer>
+            <div id="choices-container">
+                <!-- Choices will be injected here -->
+            </div>
+        </footer>
+    </div>
+    <script src="story-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
