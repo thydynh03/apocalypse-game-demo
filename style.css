@@ -1,5 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: #121212;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     color: #e0e0e0;
     font-family: 'Courier New', Courier, monospace;
     display: flex;
@@ -7,93 +11,359 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    padding: 10px;
 }
 
 .game-container {
     width: 100%;
-    max-width: 600px;
-    background: #1e1e1e;
-    border: 1px solid #333;
-    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    max-width: 700px;
+    background: linear-gradient(145deg, #1e1e1e, #252525);
+    border: 2px solid #333;
+    box-shadow: 0 0 30px rgba(0,0,0,0.9), 0 0 50px rgba(255,0,0,0.1);
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
+    animation: containerPulse 3s ease-in-out infinite;
+}
+
+@keyframes containerPulse {
+    0%, 100% { box-shadow: 0 0 30px rgba(0,0,0,0.9), 0 0 50px rgba(255,0,0,0.1); }
+    50% { box-shadow: 0 0 35px rgba(0,0,0,0.9), 0 0 60px rgba(255,0,0,0.15); }
 }
 
 header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #444;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 2px solid #444;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
     font-weight: bold;
 }
 
 .status-box {
-    background: #2a2a2a;
-    padding: 5px 10px;
+    background: linear-gradient(135deg, #2a2a2a, #1f1f1f);
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid #3a3a3a;
+    flex: 1;
+    min-width: 150px;
+}
+
+.hp-bar-container {
+    width: 100%;
+    height: 8px;
+    background: #111;
     border-radius: 4px;
+    margin-top: 5px;
+    overflow: hidden;
+    border: 1px solid #222;
+}
+
+.hp-bar {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #ff4444, #ff8844, #44ff44);
+    border-radius: 4px;
+    transition: width 0.5s ease-out, background 0.5s ease;
+    box-shadow: 0 0 10px currentColor;
 }
 
 #hp-val {
     color: #ff4444;
+    font-size: 1.1em;
 }
 
 #inventory-list {
     color: #44ff44;
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9em;
 }
 
-.scene-placeholder {
+.game-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    flex: 1;
+    padding: 8px 12px;
+    background: linear-gradient(135deg, #2a4a2a, #1a3a1a);
+    color: #88ff88;
+    border: 1px solid #3a5a3a;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9em;
+    transition: all 0.3s;
+    min-width: 80px;
+}
+
+.control-btn:hover {
+    background: linear-gradient(135deg, #3a5a3a, #2a4a2a);
+    box-shadow: 0 0 10px rgba(136,255,136,0.3);
+    transform: translateY(-2px);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+
+.scene-visual {
     width: 100%;
-    height: 200px;
-    background: #000;
+    min-height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #555;
-    border: 1px dashed #444;
     margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #333;
+    font-size: 3em;
+    text-align: center;
+    position: relative;
+    background: #000;
 }
 
-#story-text {
+.scene-visual::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.story-text {
     font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    min-height: 100px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    min-height: 120px;
+    padding: 15px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 6px;
+    border-left: 3px solid #555;
 }
 
 .choice-btn {
     display: block;
     width: 100%;
-    padding: 12px;
-    margin-bottom: 10px;
-    background: #333;
+    padding: 15px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #333, #2a2a2a);
     color: #fff;
-    border: 1px solid #555;
+    border: 2px solid #555;
     cursor: pointer;
     text-align: left;
-    transition: all 0.2s;
+    transition: all 0.3s;
     font-family: inherit;
+    font-size: 1em;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+}
+
+.choice-btn::before {
+    content: '▶';
+    position: absolute;
+    left: -20px;
+    transition: left 0.3s;
+    color: #ff8844;
 }
 
 .choice-btn:hover {
-    background: #444;
+    background: linear-gradient(135deg, #444, #383838);
     border-color: #888;
-    transform: translateX(5px);
+    transform: translateX(8px);
+    box-shadow: 0 0 15px rgba(255,136,68,0.3);
+}
+
+.choice-btn:hover::before {
+    left: 10px;
 }
 
 .choice-btn:disabled {
-    background: #222;
+    background: linear-gradient(135deg, #222, #1a1a1a);
     color: #555;
     border-color: #333;
     cursor: not-allowed;
     transform: none;
+    opacity: 0.6;
 }
 
-.typing-effect {
-    animation: fadeIn 0.5s ease-in-out;
+.choice-btn:disabled::before {
+    content: '🔒';
+    left: 10px;
+}
+
+/* Animations */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
 }
 
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+@keyframes itemPickup {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3) rotate(10deg); opacity: 0.8; box-shadow: 0 0 30px #44ff44; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 10px rgba(68,255,68,0.3); }
+    50% { box-shadow: 0 0 25px rgba(68,255,68,0.6); }
+}
+
+.scene-transition-in {
+    animation: slideInRight 0.5s ease-out;
+}
+
+.scene-transition-out {
+    animation: slideOutLeft 0.5s ease-out;
+}
+
+.item-pickup-flash {
+    animation: itemPickup 0.6s ease-out, glowPulse 1s ease-in-out 3;
+}
+
+.typewriter {
+    overflow: hidden;
+    white-space: pre-wrap;
+    animation: fadeIn 0.3s ease-in;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    body {
+        padding: 5px;
+    }
+
+    .game-container {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    header {
+        flex-direction: column;
+    }
+
+    .status-box {
+        min-width: 100%;
+    }
+
+    .scene-visual {
+        min-height: 180px;
+        font-size: 2em;
+    }
+
+    .story-text {
+        font-size: 1rem;
+        padding: 12px;
+        min-height: 100px;
+    }
+
+    .choice-btn {
+        padding: 12px;
+        font-size: 0.95em;
+    }
+
+    .game-controls {
+        gap: 8px;
+    }
+
+    .control-btn {
+        font-size: 0.85em;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .scene-visual {
+        font-size: 1.5em;
+        min-height: 150px;
+    }
+
+    .story-text {
+        font-size: 0.95rem;
+    }
+
+    .choice-btn {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+/* Scene-specific visual styles */
+.visual-bunker-dark {
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+}
+
+.visual-bunker-light {
+    background: linear-gradient(135deg, #2a1a0a, #1a0a00);
+}
+
+.visual-outside {
+    background: linear-gradient(135deg, #3a2a1a, #5a4a3a);
+}
+
+.visual-wasteland {
+    background: linear-gradient(135deg, #4a3a2a, #6a5a4a);
+}
+
+.visual-city-ruins {
+    background: linear-gradient(135deg, #2a2a3a, #1a1a2a);
+}
+
+.visual-shelter {
+    background: linear-gradient(135deg, #1a2a1a, #0a1a0a);
+}
+
+.visual-danger {
+    background: linear-gradient(135deg, #3a0a0a, #2a0000);
+    animation: dangerPulse 2s ease-in-out infinite;
+}
+
+@keyframes dangerPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.visual-victory {
+    background: linear-gradient(135deg, #0a2a0a, #0a3a1a);
+    animation: victoryGlow 2s ease-in-out infinite;
+}
+
+@keyframes victoryGlow {
+    0%, 100% { box-shadow: inset 0 0 30px rgba(68,255,68,0.2); }
+    50% { box-shadow: inset 0 0 50px rgba(68,255,68,0.4); }
+}
+
+.visual-death {
+    background: linear-gradient(135deg, #1a0000, #0a0000);
 }

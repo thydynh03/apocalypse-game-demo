@@ -11,18 +11,26 @@
         <header>
             <div class="status-box">
                 <span id="hp-label">HP: <span id="hp-val">100</span></span>
+                <div class="hp-bar-container">
+                    <div id="hp-bar" class="hp-bar"></div>
+                </div>
             </div>
             <div class="status-box">
                 <span id="inventory-label">Túi đồ: <span id="inventory-list">Trống</span></span>
             </div>
         </header>
 
+        <div class="game-controls">
+            <button id="save-btn" class="control-btn">💾 Lưu</button>
+            <button id="load-btn" class="control-btn">📂 Tải</button>
+            <button id="restart-btn" class="control-btn">🔄 Chơi lại</button>
+        </div>
+
         <main>
-            <div id="scene-image-container">
-                <!-- Placeholder for scene image -->
-                <div class="scene-placeholder">IMG: <span id="scene-img-name">hầm_tối.jpg</span></div>
+            <div id="scene-visual" class="scene-visual">
+                <!-- Dynamic visual content will be rendered here -->
             </div>
-            <div id="story-text" class="typing-effect">
+            <div id="story-text" class="story-text">
                 Đang tải dữ liệu cốt truyện...
             </div>
         </main>
